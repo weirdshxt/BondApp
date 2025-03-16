@@ -1,14 +1,24 @@
-import express from 'express'
-import authRoutes from './routes/auth.js'
+import express from "express";
+import dotenv from "dotenv";
+import authRoutes from "./routes/auth.js";
+import { connectDB } from "./lib/db.js";
 
-const app = express()
+dotenv.config();
+const app = express();
 
 const PORT = process.env.PORT || 8080;
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+app.use(express.json())
+app.use("/api/auth", authRoutes);
 
-app.use('/api/auth', authRoutes)
 
-app.listen(PORT, () => console.log(`Sever running on ${PORT}`) )
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+
+app.listen(PORT, () => {
+  console.log(`Sever running on ${PORT}`);
+  connectDB();
+});

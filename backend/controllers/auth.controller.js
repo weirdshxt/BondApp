@@ -1,5 +1,11 @@
 export const signup = (req, res) => {
-  res.render("signup");
+  const { fullName, email, password } = req.body;
+  try {
+    
+
+  } catch (err) {
+    
+  }
 };
 
 export const login = (req, res) => {
