@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import authRoutes from "./routes/auth.js";
 import { connectDB } from "./lib/db.js";
 import cookieParser from "cookie-parser";
+import messageRoutes from "./routes/message.js"
 
 dotenv.config();
 const app = express();
@@ -14,6 +15,7 @@ app.use(cookieParser());
 
 
 app.use("/api/auth", authRoutes);
+app.use("/api/message", messageRoutes);
 
 
 app.get("/", (req, res) => {
